@@ -1,6 +1,9 @@
 import pygame
 from vehicule import Vehicule
-from voiture import Voiture
+from camion import Camion
+
+VITESSE_VEHICULE = 15
+VITESSE_CAMION = 10
 
 # imports nécessaires pour la détection des touches clavier (interaction utilisateur)
 from pygame.locals import (
@@ -10,12 +13,17 @@ from pygame.locals import (
     K_RIGHT,
     K_ESCAPE,
     KEYDOWN,
+    K_z,
+    K_a,
+    K_o,
+    K_p,
     QUIT,
 )
 
 if __name__ == '__main__':
 
-    voiture1 = Vehicule('blue')
+    vehicule = Vehicule('yellow')
+    camion = Camion('green')
 
     SCREEN_WIDTH = 800
     SCREEN_HEIGHT = 600
@@ -36,12 +44,18 @@ if __name__ == '__main__':
                 # Si on appuie sur le bouton ECHAP, on arrête le programme
                 if event.key == K_ESCAPE:
                     running = False
-                if event.key == K_RIGHT:
-                    voiture1.avancer(10)
-                    #voiture2.avancer(10)
-                if event.key == K_LEFT:
-                    voiture1.reculer(10)
-                    #voiture2.reculer(10)
+                if event.key == K_UP:
+                    vehicule.monter(10)
+                if event.key == K_DOWN:
+                    vehicule.descendre(10)
+                if event.key == K_z:
+                    vehicule.avancer(VITESSE_VEHICULE)
+                if event.key == K_a:
+                    vehicule.reculer(VITESSE_VEHICULE)
+                if event.key == K_p:
+                    camion.avancer(VITESSE_CAMION)
+                if event.key == K_o:
+                    camion.reculer(VITESSE_CAMION)
             if event.type == pygame.QUIT:
                 running = False
 
@@ -49,7 +63,8 @@ if __name__ == '__main__':
         screen.fill((255, 255, 255))
 
         # on dessine le ou les véhicules
-        voiture1.dessiner(screen)
+        vehicule.dessiner(screen)
+        camion.dessiner(screen)
 
         # mise à jour de l'affichage
         pygame.display.flip()

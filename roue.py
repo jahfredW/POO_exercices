@@ -8,7 +8,7 @@ class Roue:
     def __init__(self):
         # on initialise les membres privées de la Class
         # en passant par les propriétés de la Class
-        self.position = 250
+        self.position = [250,450]
         self.diametre = 25
 
     # ------------------------------
@@ -38,4 +38,11 @@ class Roue:
         # 2 ème paramètre : la couleur
         # 3 ème paramètre : la position (centre du cercle)
         # 4 ème paramètre : le diamètre
-        pygame.draw.circle(screen, (50, 50, 255), (self.position, 320), self.diametre)
+        pygame.draw.circle(screen, (50, 50, 255), (self.position[0], self.position[1]), self.diametre)
+
+
+class Roue_camion(Roue):
+    def __init__(self):
+        super().__init__()
+        self.diametre = 50
+        self.position = [450, 250]
