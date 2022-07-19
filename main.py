@@ -15,11 +15,7 @@ from pygame.locals import (
 
 if __name__ == '__main__':
 
-    voiture1 = Voiture()
-    voiture2 = Voiture()
-
-    # on espace les voitures pour que les deux soient visibles
-    voiture2.position = 450
+    voiture1 = Vehicule('blue')
 
     SCREEN_WIDTH = 800
     SCREEN_HEIGHT = 600
@@ -42,10 +38,10 @@ if __name__ == '__main__':
                     running = False
                 if event.key == K_RIGHT:
                     voiture1.avancer(10)
-                    voiture2.avancer(10)
+                    #voiture2.avancer(10)
                 if event.key == K_LEFT:
                     voiture1.reculer(10)
-                    voiture2.reculer(10)
+                    #voiture2.reculer(10)
             if event.type == pygame.QUIT:
                 running = False
 
@@ -54,7 +50,6 @@ if __name__ == '__main__':
 
         # on dessine le ou les véhicules
         voiture1.dessiner(screen)
-        voiture2.dessiner(screen, (50, 50, 50))
 
         # mise à jour de l'affichage
         pygame.display.flip()
